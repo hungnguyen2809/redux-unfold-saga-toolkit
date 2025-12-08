@@ -1,0 +1,73 @@
+{
+  "name": "redux-unfold-saga-toolkit",
+  "version": "1.0.0",
+  "description": "A no headache middleware helper for redux-saga.",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist/"
+  ],
+  "scripts": {
+    "test": "jest",
+    "build": "tsc",
+    "commit": "git cz",
+    "lint": "eslint .",
+    "prepare": "husky"
+  },
+  "author": {
+    "name": "Hung Nguyen",
+    "email": "hungnguyen.dev99@gmail.com",
+    "url": "https://github.com/hungnguyen2809"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hungnguyen2809/redux-unfold-saga-toolkit.git"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/",
+    "access": "public"
+  },
+  "keywords": [
+    "redux",
+    "redux-saga",
+    "redux-unfold-saga",
+    "redux-unfold-saga-toolkit"
+  ],
+  "peerDependencies": {
+    "immer": ">=10.0.0",
+    "redux-saga": "*"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^20.2.0",
+    "@commitlint/config-conventional": "^20.2.0",
+    "@eslint/js": "^9.39.1",
+    "@types/jest": "^30.0.0",
+    "commitizen": "^4.3.1",
+    "eslint": "^9.39.1",
+    "git-cz": "^4.9.0",
+    "husky": "^9.1.7",
+    "immer": "10.0.0",
+    "jest": "^30.2.0",
+    "lint-staged": "^16.2.7",
+    "prettier": "^3.7.4",
+    "redux-saga": "1.4.2",
+    "ts-jest": "^29.4.6",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.48.1"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{json,md,yml}": [
+      "prettier --write"
+    ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "git-cz"
+    }
+  }
+}
