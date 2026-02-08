@@ -1,7 +1,7 @@
 {
   "name": "redux-unfold-saga-toolkit",
-  "version": "1.0.1",
-  "description": "A no headache middleware helper for redux-saga.",
+  "version": "1.0.2",
+  "description": "A more user-friendly, headache-free redux-saga middleware",
   "license": "MIT",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
