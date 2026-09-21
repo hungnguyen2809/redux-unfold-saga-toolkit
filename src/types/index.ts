@@ -15,6 +15,7 @@ export interface UnfoldSagaOptionsType {
 export interface UnfoldSagaHandlerType {
   action: UnfoldSagaActionType;
   handler: Function | GeneratorFunction;
+  fallbackValue?: any;
 }
 
 export interface UnfoldSagaPayloadAction<T = any> {

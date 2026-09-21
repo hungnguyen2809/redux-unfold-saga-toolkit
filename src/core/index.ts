@@ -13,6 +13,7 @@ import { Fn, UnfoldSagaCallbacksType, UnfoldSagaHandlerType, UnfoldSagaOptionsTy
  * @param {UnfoldSagaHandlerType} body
  * @param {UnfoldSagaActionType} body.action Action
  * @param {Function} body.handler Main handler function. Its returned value will become onSuccess callback param
+ * @param {Object} body.fallbackValue Fallback value used only when the handler result is null or undefined
  * @returns {SagaIterator} SagaIterator
  * @description Common saga helper that unifies handling side effects into only one standard form
  * @example
@@ -53,7 +54,7 @@ import { Fn, UnfoldSagaCallbacksType, UnfoldSagaHandlerType, UnfoldSagaOptionsTy
  * }
  * ```
  */
-export function* unfoldSaga({ action, handler }: UnfoldSagaHandlerType): SagaIterator {
+export function* unfoldSaga({ action, handler, fallbackValue }: UnfoldSagaHandlerType): SagaIterator {
   let data: any;
   const defaultCallbacks: Required<UnfoldSagaCallbacksType> = {
     onBegin: noop,
@@ -75,6 +76,9 @@ export function* unfoldSaga({ action, handler }: UnfoldSagaHandlerType): SagaIte
       data = yield* handler();
     } else {
       data = yield call(handler as Fn);
+    }
+    if (fallbackValue !== undefined && (data === null || data === undefined)) {
+      data = fallbackValue;
     }
     if (defaultOptions.stateful) yield put({ type: createActionTypeOnSuccess(action.type), payload: data });
     yield call(defaultCallbacks.onSuccess as Fn, data);
